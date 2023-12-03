@@ -1,0 +1,6 @@
+Package: eve-online-tools
+Version: 0.0.1
+Maintainer: Gabor Zeller <gabriel.d.celery@gmail.com>
+Architecture: amd64
+Homepage: http://example.com
+Description: A tool for executing EVE Online related tools
