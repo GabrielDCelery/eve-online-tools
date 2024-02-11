@@ -27,8 +27,8 @@ func callAPI(config *GetMarketOrdersFromPublicApiConfig, mtx *sync.Mutex, toPrin
 
 	go func() {
 		for _, eveApiMarketOrder := range eveApiMarketOrders {
-			internalMarketOrder := dataTransforms.TransformEveApiMarketOrderToMarketOrder(&eveApiMarketOrder, config.RegionID, downloadedAt)
-			csvRow := dataTransforms.TransformMarketOrderToCsvRow(&internalMarketOrder)
+			marketOrder := dataTransforms.TransformEveApiMarketOrderToMarketOrder(&eveApiMarketOrder, config.RegionID, downloadedAt)
+			csvRow := dataTransforms.TransformMarketOrderToCsvRow(&marketOrder)
 			*toPrintChan <- csvRow
 		}
 	}()

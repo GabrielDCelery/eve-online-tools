@@ -7,16 +7,16 @@ import (
 	"log"
 	"os"
 
-	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/dataFilters"
+	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/dataCalculations"
 	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/dataTransforms"
 )
 
-func FilterMarketOrders(typeID uint64, orderTypes *[]string, volumeStatuses *[]string) {
-	fmt.Println(dataTransforms.GetMarketOrderAsCsvHeader())
-
+func CalculateDailySale() {
 	reader := csv.NewReader(os.Stdin)
 
 	rowIndex := 0
+	numOfRecords := 0
+	totalNumOfDailySales := float64(0)
 
 	for {
 		csvRow, err := reader.Read()
@@ -40,15 +40,24 @@ func FilterMarketOrders(typeID uint64, orderTypes *[]string, volumeStatuses *[]s
 			break
 		}
 
+		numOfRecords += 1
+
 		marketOrder, err := dataTransforms.TransformCsvRowToMarketOrder(&csvRow)
 
 		if err != nil {
 			log.Fatalln(err)
 		}
 
-		if dataFilters.DoesMarketOrderMatchFilterConditions(&marketOrder, typeID, orderTypes, volumeStatuses) {
-			reTransformedRow := dataTransforms.TransformMarketOrderToCsvRow(&marketOrder)
-			fmt.Println(reTransformedRow)
+		volumePerDay, err := dataCalculations.CalculateVolumePerDay(&marketOrder)
+
+		if err != nil {
+			log.Fatalln(err)
 		}
+
+		totalNumOfDailySales += volumePerDay
 	}
+
+	averageNumOfDailySales := totalNumOfDailySales / float64(numOfRecords)
+
+	fmt.Println(averageNumOfDailySales)
 }

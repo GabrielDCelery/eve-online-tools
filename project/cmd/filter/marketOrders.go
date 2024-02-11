@@ -11,7 +11,9 @@ import (
 )
 
 var (
-	marketOrdersCmdTypeID uint64
+	marketOrdersCmdTypeID       uint64
+	marketOrdersCmdOrderTypes   []string
+	marketOrdersCmdVolumeStatus []string
 )
 
 // marketOrdersCmd represents the marketOrders command
@@ -25,7 +27,7 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		lib.FilterMarketOrders(marketOrdersCmdTypeID)
+		lib.FilterMarketOrders(marketOrdersCmdTypeID, &marketOrdersCmdOrderTypes, &marketOrdersCmdVolumeStatus)
 	},
 }
 
@@ -37,6 +39,9 @@ func init() {
 	if err := marketOrdersCmd.MarkFlagRequired("typeID"); err != nil {
 		log.Fatalln(err)
 	}
+
+	marketOrdersCmd.Flags().StringSliceVar(&marketOrdersCmdOrderTypes, "orderType", []string{"buy", "sell"}, "Order type")
+	marketOrdersCmd.Flags().StringSliceVar(&marketOrdersCmdVolumeStatus, "volumeStatus", []string{"full", "decreasing", "depleted"}, "Volume status")
 
 	// Here you will define your flags and configuration settings.
 

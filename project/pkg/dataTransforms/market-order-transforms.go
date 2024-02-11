@@ -33,7 +33,7 @@ func GetMarketOrderAsCsvHeader() string {
 	return `duration,is_buy_order,issued,location_id,min_volume,order_id,price,range,system_id,type_id,volume_remain,volume_total,downloaded_at,region_id`
 }
 
-func TransformCsvRowToInternalMarketOrder(csvRow *[]string) (internals.MarketOrder, error) {
+func TransformCsvRowToMarketOrder(csvRow *[]string) (internals.MarketOrder, error) {
 	duration, err := strconv.ParseUint((*csvRow)[0], 10, 64)
 	if err != nil {
 		return internals.MarketOrder{}, err
@@ -85,7 +85,7 @@ func TransformCsvRowToInternalMarketOrder(csvRow *[]string) (internals.MarketOrd
 		return internals.MarketOrder{}, err
 	}
 
-	internalMarketOrder := internals.MarketOrder{
+	marketOrder := internals.MarketOrder{
 		Duration:     duration,
 		IsBuyOrder:   isByOrder,
 		Issued:       issued,
@@ -102,5 +102,5 @@ func TransformCsvRowToInternalMarketOrder(csvRow *[]string) (internals.MarketOrd
 		RegionID:     regionID,
 	}
 
-	return internalMarketOrder, nil
+	return marketOrder, nil
 }

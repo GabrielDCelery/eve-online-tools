@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/GabrielDCelery/eve-online-tools-cli/cmd/api"
+	"github.com/GabrielDCelery/eve-online-tools-cli/cmd/calculate"
 	"github.com/GabrielDCelery/eve-online-tools-cli/cmd/filter"
 
 	"github.com/spf13/cobra"
@@ -47,6 +48,7 @@ func init() {
 	// when this action is called directly.
 	rootCmd.AddCommand(api.ApiCmd)
 	rootCmd.AddCommand(filter.FilterCmd)
+	rootCmd.AddCommand(calculate.CalculateCmd)
 
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
