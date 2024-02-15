@@ -2,7 +2,10 @@ name: create-release
 run-name: Create new release
 on:
   release:
-    types: [published]
+    branches:
+      - main
+    tags:
+      - v*
 jobs:
   build-assets:
     name: Build assets
