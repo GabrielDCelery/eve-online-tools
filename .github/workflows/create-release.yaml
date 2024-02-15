@@ -20,4 +20,6 @@ jobs:
           check-latest: false
       - run: make release
       - run: gh release create ${{ github.event.release.tag_name }}
+        env:
+          GH_TOKEN: ${{ github.token }}
       - run: gh release upload ${{ github.event.release.tag_name }} ./assets/*
