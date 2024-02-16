@@ -2,8 +2,6 @@ name: create-release
 run-name: Create new release
 on:
   push:
-    branches:
-      - main
     tags:
       - v*
 jobs:
