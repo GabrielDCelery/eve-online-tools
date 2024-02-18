@@ -18,13 +18,14 @@ var (
 // getMarketHistoryCmd represents the getMarketHistory command
 var getMarketHistoryCmd = &cobra.Command{
 	Use:   "get-market-history",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Retrieve market history for an item in a region",
+	Long: `
+Description:
+  Retrieve market history for an item in a region
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+Examples(s):
+  eve-online-tools api get-market-history --regionID=10000002 --typeID=32006
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		lib.GetMarketHistoryFromPublicApi(getMarketHistoryCmdRegionID, getMarketHistoryCmdTypeID)
 	},

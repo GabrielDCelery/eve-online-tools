@@ -18,13 +18,14 @@ var (
 // getMarketOrdersCmd represents the getMarketOrders command
 var getMarketOrdersCmd = &cobra.Command{
 	Use:   "get-market-orders",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Retrieve market orders in a region",
+	Long: `
+Description:
+  Retrieve market orders in a region
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+Examples(s):
+  eve-online-tools api get-market-orders --regionID 10000002
+`,
 	Run: func(cmd *cobra.Command, args []string) {
 		config := lib.GetMarketOrdersFromPublicApiConfig{
 			RegionID: getMarketOrdersCmdRegionID,

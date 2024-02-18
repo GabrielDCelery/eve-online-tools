@@ -4,24 +4,26 @@ Copyright © 2024 NAME HERE <EMAIL ADDRESS>
 package api
 
 import (
-	"fmt"
-
 	"github.com/spf13/cobra"
 )
 
 // apiCmd represents the api command
 var ApiCmd = &cobra.Command{
 	Use:   "api",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Commands to access the public EVE Online API",
+	Long: `
+Description:
+  Commands to access the public EVE Online API
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("api called")
-	},
+Example(s):
+  eve-online-tools api get-market-orders --regionID 10000002
+  eve-online-tools api get-market-history --regionID=10000002 --typeID=32006
+`,
+	/*
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println("api called")
+		},
+	*/
 }
 
 func init() {

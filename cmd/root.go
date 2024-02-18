@@ -7,8 +7,6 @@ import (
 	"os"
 
 	"github.com/GabrielDCelery/eve-online-tools-cli/cmd/api"
-	"github.com/GabrielDCelery/eve-online-tools-cli/cmd/calculate"
-	"github.com/GabrielDCelery/eve-online-tools-cli/cmd/filter"
 
 	"github.com/spf13/cobra"
 )
@@ -16,13 +14,13 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "eve-online-tools",
-	Short: "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
-examples and usage of using your application. For example:
+	Short: "CLI commands for various EVE Online related operations",
+	Long: `
+Description:
+  CLI commands for various EVE Online related operations
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+Example(s):
+  eve-online-tools api get-market-orders --regionID 10000002`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
@@ -47,8 +45,8 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.AddCommand(api.ApiCmd)
-	rootCmd.AddCommand(filter.FilterCmd)
-	rootCmd.AddCommand(calculate.CalculateCmd)
+	// rootCmd.AddCommand(filter.FilterCmd)
+	// rootCmd.AddCommand(calculate.CalculateCmd)
 
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
