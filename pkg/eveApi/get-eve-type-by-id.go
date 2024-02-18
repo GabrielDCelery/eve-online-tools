@@ -20,6 +20,10 @@ func GetEveTypeByID(typeID uint64) (EveApiType, error) {
 
 	body, err := io.ReadAll(resp.Body)
 
+	if err != nil {
+		return EveApiType{}, err
+	}
+
 	eveEntity := EveApiType{}
 
 	err = json.Unmarshal(body, &eveEntity)
