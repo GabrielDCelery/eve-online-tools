@@ -22,6 +22,6 @@ duration,is_buy_order,issued,location_id,min_volume,order_id,price,range,system_
 90,true,2024-02-03T03:47:42Z,60003760,1,6697587567,66000,station,30000142,46934,8,11,2024-02-18T15:08:27Z,10000002
 ```
 
-### Installation (Linux)
+### Installation
 
-Go to the [RELEASES](https://github.com/GabrielDCelery/eve-online-tools-cli/releases) page and in the `Assets` section find and then download the `.zip` that is compatible with your system.
+Go to the [RELEASES](https://github.com/GabrielDCelery/eve-online-tools-cli/releases) page and in the `Assets` section find, download and then extract the `.zip` that is compatible with your system.
