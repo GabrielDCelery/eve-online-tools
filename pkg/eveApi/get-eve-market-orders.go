@@ -17,6 +17,8 @@ func GetEveMarketOrders(regionID uint64, page uint64) ([]EveApiMarketOrder, erro
 		return []EveApiMarketOrder{}, err
 	}
 
+	defer resp.Body.Close()
+
 	if resp.StatusCode == 200 {
 		body, err := io.ReadAll(resp.Body)
 
