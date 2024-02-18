@@ -2,7 +2,6 @@ package eveAPI
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -45,9 +44,9 @@ func GetEveMarketOrders(regionID uint64, page uint64) ([]EveApiMarketOrder, erro
 		if resp.StatusCode == 404 && string(body) == `{"error":"Requested page does not exist!"}` {
 			return []EveApiMarketOrder{}, nil
 		}
-		return []EveApiMarketOrder{}, errors.New(fmt.Sprintf(`Failed to call EVE API, status code %d`, resp.StatusCode))
+		return []EveApiMarketOrder{}, fmt.Errorf(`failed to call EVE API, status code %d`, resp.StatusCode)
 	}
 
-	return []EveApiMarketOrder{}, errors.New(fmt.Sprintf(`Sorry something enexpected happened`))
+	return []EveApiMarketOrder{}, fmt.Errorf(`sorry something enexpected happened`)
 
 }
