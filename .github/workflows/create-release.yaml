@@ -21,7 +21,7 @@ jobs:
           check-latest: false
 
       - name: Build assets
-        run: RELEASE_TAG=${{ github.ref_name }} make build-release-assets
+        run: RELEASE_TAG=${{ github.ref_name }} make release
 
       - name: Create release
         run: gh release create ${{ github.ref_name }}
