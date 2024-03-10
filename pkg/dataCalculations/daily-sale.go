@@ -7,10 +7,6 @@ import (
 	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/custom"
 )
 
-type DailySale struct {
-	volumePerSecond float64
-}
-
 func CalculateVolumePerDay(m *custom.MarketOrder) (float64, error) {
 	downloadedAtTime, err := time.Parse("2006-01-02T15:04:05Z", m.DownloadedAt)
 	if err != nil {

@@ -11,8 +11,8 @@ func TransformMarketHistoryItemToCsvRow(marketHistoryItem *custom.MarketHistoryI
 	var csvRow []string
 	csvRow = append(
 		csvRow,
-		strconv.FormatFloat(marketHistoryItem.Average, 'f', 0, 64),
 		marketHistoryItem.Date,
+		strconv.FormatFloat(marketHistoryItem.Average, 'f', 0, 64),
 		strconv.FormatFloat(marketHistoryItem.Highest, 'f', 0, 64),
 		strconv.FormatFloat(marketHistoryItem.Lowest, 'f', 0, 64),
 		strconv.FormatUint(marketHistoryItem.OrderCount, 10),
@@ -25,5 +25,5 @@ func TransformMarketHistoryItemToCsvRow(marketHistoryItem *custom.MarketHistoryI
 }
 
 func GetMarketHistoryItemAsCsvHeader() string {
-	return `average,date,highest,lowest,order_count,volume,downloaded_at,type_id,region_id`
+	return `date,average,highest,lowest,order_count,volume,downloaded_at,type_id,region_id`
 }

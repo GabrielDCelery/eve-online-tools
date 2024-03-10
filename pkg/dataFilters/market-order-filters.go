@@ -16,10 +16,10 @@ func isOfOrderType(m *custom.MarketOrder, orderTypes *[]string) bool {
 		return true
 	}
 	if returnSellOrders {
-		return m.IsBuyOrder == false
+		return !m.IsBuyOrder
 	}
 	if returnBuyOrders {
-		return m.IsBuyOrder == true
+		return m.IsBuyOrder
 	}
 	return false
 }
