@@ -46,4 +46,4 @@ RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/i
 
 WORKDIR /home/$USER_NAME/eve-online-tools-cli
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["pre-commit", "run", "--all-files"]
