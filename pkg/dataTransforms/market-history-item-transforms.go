@@ -25,5 +25,5 @@ func TransformMarketHistoryItemToCsvRow(marketHistoryItem *custom.MarketHistoryI
 }
 
 func GetMarketHistoryItemAsCsvHeader() string {
-	return `date,average,highest,lowest,order_count,volume,downloaded_at,type_id,region_id`
+	return `date,average,highest,lowest,order_count,volume,downloaded_at,type_id,region_id,a`
 }
