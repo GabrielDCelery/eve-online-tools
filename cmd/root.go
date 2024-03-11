@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/GabrielDCelery/eve-online-tools-cli/cmd/api"
+	"github.com/GabrielDCelery/eve-online-tools-cli/cmd/transforms"
 
 	"github.com/spf13/cobra"
 )
@@ -45,6 +46,8 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	rootCmd.AddCommand(api.ApiCmd)
+	rootCmd.AddCommand(transforms.TransformsCmd)
+
 	// rootCmd.AddCommand(filter.FilterCmd)
 	// rootCmd.AddCommand(calculate.CalculateCmd)
 
