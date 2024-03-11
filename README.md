@@ -25,3 +25,23 @@ duration,is_buy_order,issued,location_id,min_volume,order_id,price,range,system_
 ### Installation
 
 Go to the [RELEASES](https://github.com/GabrielDCelery/eve-online-tools-cli/releases) page and in the `Assets` section find, download and then extract the `.zip` that is compatible with your system.
+
+### For developers
+
+#### Setup for local development
+
+Besides cloning the repository you will need docker on your system to run the pre-commit hooks.
+
+```
+https://www.docker.com/
+```
+
+If you are working on Linux copy the `pre-commit.sh` file located in the `.dev` folder to the `.git/hooks` folder.
+
+Example:
+
+```
+cp ./.dev/pre-commit.sh ./.git/hooks/pre-commit.sh
+```
+
+Before comitting the the code docker will run the pre-comit hooks located in `.pre-commit-config.yaml`
