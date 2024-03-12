@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"runtime"
 
 	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/dataTransforms"
 	"github.com/xitongsys/parquet-go-source/local"
@@ -31,7 +32,7 @@ func TransforMarketOrders(config *TransformMarketOrdersConfig) {
 
 			defer fileWriter.Close()
 
-			parquetWriter, err := writer.NewParquetWriter(fileWriter, new(dataTransforms.MarketOrder), 1)
+			parquetWriter, err := writer.NewParquetWriter(fileWriter, new(dataTransforms.MarketOrderParquet), int64(runtime.NumCPU()))
 
 			if err != nil {
 				log.Fatalln(err)
@@ -70,7 +71,13 @@ func TransforMarketOrders(config *TransformMarketOrdersConfig) {
 					log.Fatalln(err)
 				}
 
-				if err = parquetWriter.Write(marketOrder); err != nil {
+				marketOrderParquet, err := dataTransforms.TransformMarketOrderToMarketOrderParquet(&marketOrder)
+
+				if err != nil {
+					log.Fatalln(err)
+				}
+
+				if err = parquetWriter.Write(marketOrderParquet); err != nil {
 					log.Fatalln(err)
 				}
 			}
