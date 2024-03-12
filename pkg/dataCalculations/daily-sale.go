@@ -4,10 +4,10 @@ import (
 	"math"
 	"time"
 
-	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/custom"
+	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/dataTransforms"
 )
 
-func CalculateVolumePerDay(m *custom.MarketOrder) (float64, error) {
+func CalculateVolumePerDay(m *dataTransforms.MarketOrder) (float64, error) {
 	downloadedAtTime, err := time.Parse("2006-01-02T15:04:05Z", m.DownloadedAt)
 	if err != nil {
 		return 0, err

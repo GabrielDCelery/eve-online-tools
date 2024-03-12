@@ -7,7 +7,6 @@ import (
 	"log"
 	"os"
 
-	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/custom"
 	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/dataTransforms"
 	"github.com/xitongsys/parquet-go-source/local"
 	"github.com/xitongsys/parquet-go/writer"
@@ -32,7 +31,7 @@ func TransforMarketOrders(config *TransformMarketOrdersConfig) {
 
 			defer fileWriter.Close()
 
-			parquetWriter, err := writer.NewParquetWriter(fileWriter, new(custom.MarketOrder), 1)
+			parquetWriter, err := writer.NewParquetWriter(fileWriter, new(dataTransforms.MarketOrder), 1)
 
 			if err != nil {
 				log.Fatalln(err)

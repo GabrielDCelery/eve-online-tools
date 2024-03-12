@@ -3,11 +3,9 @@ package dataTransforms
 import (
 	"strconv"
 	"strings"
-
-	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/custom"
 )
 
-func TransformMarketOrderToCsvRow(marketOrder *custom.MarketOrder) string {
+func TransformMarketOrderToCsvRow(marketOrder *MarketOrder) string {
 	var csvRow []string
 	csvRow = append(
 		csvRow,
@@ -33,59 +31,59 @@ func GetMarketOrderAsCsvHeader() string {
 	return `duration,is_buy_order,issued,location_id,min_volume,order_id,price,range,system_id,type_id,volume_remain,volume_total,downloaded_at,region_id`
 }
 
-func TransformCsvRowToMarketOrder(csvRow *[]string) (custom.MarketOrder, error) {
+func TransformCsvRowToMarketOrder(csvRow *[]string) (MarketOrder, error) {
 	duration, err := strconv.ParseUint((*csvRow)[0], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	isByOrder, err := strconv.ParseBool((*csvRow)[1])
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	issued := (*csvRow)[2]
 
 	locationID, err := strconv.ParseUint((*csvRow)[3], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	minValue, err := strconv.ParseUint((*csvRow)[4], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	orderID, err := strconv.ParseUint((*csvRow)[5], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	price, err := strconv.ParseFloat((*csvRow)[6], 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	orderRange := (*csvRow)[7]
 
 	systemID, err := strconv.ParseUint((*csvRow)[8], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	typeID, err := strconv.ParseUint((*csvRow)[9], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	volumeRemain, err := strconv.ParseUint((*csvRow)[10], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	volumeTotal, err := strconv.ParseUint((*csvRow)[11], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 	downloadedAt := (*csvRow)[12]
 
 	regionID, err := strconv.ParseUint((*csvRow)[13], 10, 64)
 	if err != nil {
-		return custom.MarketOrder{}, err
+		return MarketOrder{}, err
 	}
 
-	marketOrder := custom.MarketOrder{
+	marketOrder := MarketOrder{
 		Duration:     duration,
 		IsBuyOrder:   isByOrder,
 		Issued:       issued,

@@ -1,12 +1,11 @@
 package dataTransforms
 
 import (
-	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/custom"
 	eveAPI "github.com/GabrielDCelery/eve-online-tools-cli/pkg/eveApi"
 )
 
-func TransformEveApiMarketOrderToMarketOrder(eMorder *eveAPI.EveApiMarketOrder, regionID uint64, downloadedAt string) custom.MarketOrder {
-	return custom.MarketOrder{
+func TransformEveApiMarketOrderToMarketOrder(eMorder *eveAPI.EveApiMarketOrder, regionID uint64, downloadedAt string) MarketOrder {
+	return MarketOrder{
 		Duration:     eMorder.Duration,
 		IsBuyOrder:   eMorder.IsBuyOrder,
 		Issued:       eMorder.Issued,
@@ -24,8 +23,8 @@ func TransformEveApiMarketOrderToMarketOrder(eMorder *eveAPI.EveApiMarketOrder, 
 	}
 }
 
-func TransformEveApiMarketHistoryItemToMarketHistoryItem(eMHItem *eveAPI.EveApiMarketHistoryItem, regionID uint64, typeID uint64, downloadedAt string) custom.MarketHistoryItem {
-	return custom.MarketHistoryItem{
+func TransformEveApiMarketHistoryItemToMarketHistoryItem(eMHItem *eveAPI.EveApiMarketHistoryItem, regionID uint64, typeID uint64, downloadedAt string) MarketHistoryItem {
+	return MarketHistoryItem{
 		Average:      eMHItem.Average,
 		Date:         eMHItem.Date,
 		Highest:      eMHItem.Highest,

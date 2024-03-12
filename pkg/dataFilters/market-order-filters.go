@@ -1,15 +1,15 @@
 package dataFilters
 
 import (
-	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/custom"
+	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/dataTransforms"
 	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/utils"
 )
 
-func doesMatchTypeID(m *custom.MarketOrder, typeID uint64) bool {
+func doesMatchTypeID(m *dataTransforms.MarketOrder, typeID uint64) bool {
 	return m.TypeID == typeID
 }
 
-func isOfOrderType(m *custom.MarketOrder, orderTypes *[]string) bool {
+func isOfOrderType(m *dataTransforms.MarketOrder, orderTypes *[]string) bool {
 	returnSellOrders := utils.Contains(orderTypes, "sell")
 	returnBuyOrders := utils.Contains(orderTypes, "buy")
 	if returnBuyOrders && returnSellOrders {
@@ -24,7 +24,7 @@ func isOfOrderType(m *custom.MarketOrder, orderTypes *[]string) bool {
 	return false
 }
 
-func isOfVolumeStatus(m *custom.MarketOrder, volumeStatuses *[]string) bool {
+func isOfVolumeStatus(m *dataTransforms.MarketOrder, volumeStatuses *[]string) bool {
 	returnFullOrders := utils.Contains(volumeStatuses, "full")
 	returnDecreasingOrders := utils.Contains(volumeStatuses, "decreasing")
 	if returnFullOrders && returnDecreasingOrders {
@@ -39,6 +39,6 @@ func isOfVolumeStatus(m *custom.MarketOrder, volumeStatuses *[]string) bool {
 	return false
 }
 
-func DoesMarketOrderMatchFilterConditions(marketOrder *custom.MarketOrder, typeID uint64, orderTypes *[]string, volumeStatuses *[]string) bool {
+func DoesMarketOrderMatchFilterConditions(marketOrder *dataTransforms.MarketOrder, typeID uint64, orderTypes *[]string, volumeStatuses *[]string) bool {
 	return isOfVolumeStatus(marketOrder, volumeStatuses) && doesMatchTypeID(marketOrder, typeID) && isOfOrderType(marketOrder, orderTypes)
 }

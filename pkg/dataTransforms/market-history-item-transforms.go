@@ -3,11 +3,9 @@ package dataTransforms
 import (
 	"strconv"
 	"strings"
-
-	"github.com/GabrielDCelery/eve-online-tools-cli/pkg/custom"
 )
 
-func TransformMarketHistoryItemToCsvRow(marketHistoryItem *custom.MarketHistoryItem) string {
+func TransformMarketHistoryItemToCsvRow(marketHistoryItem *MarketHistoryItem) string {
 	var csvRow []string
 	csvRow = append(
 		csvRow,
